@@ -13,7 +13,7 @@ class PostingController < ApplicationController
 												  longitude: params[:longitude])
 
 		if posting.save
-			render inline: '<%= #{posting.id} %>'
+			render inline: "<%= #{posting.id} %>"
 		else
 			render status: 400
 		end
