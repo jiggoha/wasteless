@@ -13,3 +13,32 @@
  *= require_tree .
  *= require_self
  */
+
+tr:nth-child(even) { background: #CCC }
+tr:nth-child(odd) { background: #FFF }
+
+td {
+	font-family: "Helvetica";
+	font-size: 16px;
+	vertical-align: top;
+	padding: 2px;
+}
+
+p {
+	font-family: "Helvetica";
+	font-size: 11px;
+	position: absolute;
+  right: 20px;
+}
+
+h1 {
+	font-family: "Helvetica";
+	font-size: 36px;
+}
+
+#map-canvas {
+ 	width: 800px;
+ 	height: 600px;
+ 	margin: 0 auto;
+ 	background-color: #CCC;
+}

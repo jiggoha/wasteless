@@ -1,5 +1,27 @@
-<div id="map-canvas" style="width: 500px; height: 400px;"></div>
+<center><h1>WasteLess</h1></center>
+<center>
+<table>
+	<tr>
+		<td><div id="map-canvas"></div></td>
+		
+		<td>
+			<table>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Address</th>
+				<th>Time</th>
+				<% @postings.each do |p| %>
+					<tr class="posting" id="posting-<%= p.id %>">
+						<td><%= p.name %></td>
+						<td><%= p.description %></td>
+						<td><%= p.address %></td>
+						<td><%= p.time.strftime("%H:%M") %></td>
+					</tr>
+				<% end %>
+			</table>
+		</td>
+	</tr>
+</table>
+</center>
 
-<script>
-  function initialize() {}
-</script>
+<p>Created for HudsonHack 2015</p>

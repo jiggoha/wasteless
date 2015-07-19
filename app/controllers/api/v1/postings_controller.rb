@@ -1,26 +1,34 @@
 class Api::V1::PostingsController < Api::ApiController
-	before_action :authenticate
+	# before_action :authenticate
 
 	HALF_MILE_IN_DEGREES = 0.00724637681
 	MILE_IN_DEGREES = 0.01449275362
 
 	def all
-		@postings = Posting.all
 		json = {}
-		json[:data] = @postings
+		json[:data] = Posting.all
 		render :json => json
 	end
 
 	def create
+		results = Geocoder.search(params[:address])
+		location = results.first
+
 		posting = Posting.new(name: params[:name],
 												  description: params[:description],
-												  amount: params[:amount],
 												  time: Time.now,
-												  latitude: params[:latitude],
-												  longitude: params[:longitude])
+												  latitude: location.latitude,
+												  longitude: location.longitude,
+												  address: location.address,
+													city: location.city,
+													state: location.state,
+													state_code: location.state_code,
+													postal_code: location.postal_code,
+													country: location.country,
+													country_code: location.country_code)
 
 		if posting.save
-			render inline: "<%= #{posting.id} %>"
+			render plain: "#{posting.id}"
 		else
 			render status: 400
 		end
