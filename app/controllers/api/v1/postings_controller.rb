@@ -11,21 +11,40 @@ class Api::V1::PostingsController < Api::ApiController
 	end
 
 	def create
-		results = Geocoder.search(params[:address])
-		location = results.first
+		if (params[:address])
+			results = Geocoder.search(params[:address])
+			location = results.first
 
-		posting = Posting.new(name: params[:name],
-												  description: params[:description],
-												  time: Time.now,
-												  latitude: location.latitude,
-												  longitude: location.longitude,
-												  address: location.address,
-													city: location.city,
-													state: location.state,
-													state_code: location.state_code,
-													postal_code: location.postal_code,
-													country: location.country,
-													country_code: location.country_code)
+			posting = Posting.new(name: params[:name],
+													  description: params[:description],
+													  time: Time.now,
+													  latitude: location.latitude,
+													  longitude: location.longitude,
+													  address: location.address,
+														city: location.city,
+														state: location.state,
+														state_code: location.state_code,
+														postal_code: location.postal_code,
+														country: location.country,
+														country_code: location.country_code)
+		else 
+			results = Geocoder.search(params[:latitude], params[:longitude])
+
+			location = results.first
+
+			posting = Posting.new(name: params[:name],
+													  description: params[:description],
+													  time: Time.now,
+													  latitude: params[:latitude],
+													  longitude: params[:longitude],
+													  address: location.address,
+														city: location.city,
+														state: location.state,
+														state_code: location.state_code,
+														postal_code: location.postal_code,
+														country: location.country,
+														country_code: location.country_code)
+		end
 
 		if posting.save
 			render plain: "#{posting.id}"

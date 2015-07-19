@@ -20,16 +20,18 @@
 
       var map = new google.maps.Map(mapCanvas, mapOptions);
 
-      // place_markers(map);
+      place_markers(map);
     }
 
-    // function place_markers(map) {
-    //   var myLatlng = new google.maps.LatLng(<%= @postings[0].latitude %>, <%= @postings[0].latitude %>);
-    //   var marker = new google.maps.Marker({
-    //     position: myLatlng,
-    //     map: map,
-    //   });
-    // }
+    function place_markers(map) {
+      <% @postings.each do |p| %>
+        var myLatlng = new google.maps.LatLng(<%= p.latitude %>, <%= p.longitude %>);
+        var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+        });
+      <% end %>
+    }
 
     google.maps.event.addDomListener(window, 'load', initialize);
   </script>
