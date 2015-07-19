@@ -1,6 +1,7 @@
 class PostingController < ApplicationController
 	def index
 		@postings = Posting.all
+		@count = @postings.count
 	end
 end
 
