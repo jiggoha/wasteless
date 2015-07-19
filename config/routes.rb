@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-  root 'posting#all'
-  get '/postings' => 'posting#show'
-  post '/new' =>'posting#create'
+  root 'posting#index'
+
+  namespace :api do
+    namespace :v1 do
+      get '/postings/all'
+      get '/postings/show_close'
+      get '/postings/show/:id' => 'postings#show'
+      post '/postings/create'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
