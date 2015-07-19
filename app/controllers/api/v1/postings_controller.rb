@@ -1,5 +1,5 @@
 class Api::V1::PostingsController < Api::ApiController
-	# before_action :authenticate
+	before_action :authenticate
 
 	HALF_MILE_IN_DEGREES = 0.00724637681
 	MILE_IN_DEGREES = 0.01449275362
