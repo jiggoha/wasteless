@@ -6,7 +6,7 @@ class Api::V1::PostingsController < Api::ApiController
 
 	def all
 		@postings = Posting.all
-		render :json => @postings.to_json
+		render :json => @postings
 	end
 
 	def create
