@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718204926) do
+ActiveRecord::Schema.define(version: 20150719000116) do
 
   create_table "postings", force: :cascade do |t|
     t.text     "name"
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(version: 20150718204926) do
     t.float    "longitude"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "api_key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
