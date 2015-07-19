@@ -1,3 +1,4 @@
 Built for HudsonHack, July 18, 2015.
 
 Primarily a Rails API for iOS mobile app.
+iOS app by Carter Levin: https://github.com/clevin95/wasteLess
