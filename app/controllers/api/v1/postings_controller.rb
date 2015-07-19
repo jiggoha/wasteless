@@ -7,7 +7,7 @@ class Api::V1::PostingsController < Api::ApiController
 	def all
 		@postings = Posting.all
 		json = {}
-		json[:data] = @posting
+		json[:data] = @postings
 		render :json => json
 	end
 
