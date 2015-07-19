@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create()
+
 address = "156 5th Avenue, New York, NY"
 result = Geocoder.search(address).first
 posting = Posting.create(name: "HudsonHack",

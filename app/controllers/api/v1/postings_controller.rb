@@ -1,5 +1,5 @@
 class Api::V1::PostingsController < Api::ApiController
-	before_action :authenticate
+	# before_action :authenticate
 
 	HALF_MILE_IN_DEGREES = 0.00724637681
 	MILE_IN_DEGREES = 0.01449275362
@@ -28,7 +28,7 @@ class Api::V1::PostingsController < Api::ApiController
 														country: location.country,
 														country_code: location.country_code)
 		else 
-			results = Geocoder.search(params[:latitude], params[:longitude])
+			results = Geocoder.search("#{params[:latitude]}, #{params[:longitude]}")
 
 			location = results.first
 
